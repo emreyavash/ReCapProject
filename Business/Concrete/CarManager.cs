@@ -25,6 +25,10 @@ namespace Business.Concrete
                 _carDal.Add(car);
                 Console.WriteLine("Araba Kaydedildi.");
             }
+            else
+            {
+                Console.WriteLine("Kurallara uymadın.");
+            }
         }
 
         public List<Car> Get(int id)

@@ -24,14 +24,14 @@ namespace ConsoleUI
             //{
             //    Console.WriteLine(car.ModelYear + " " + car.Description);
             //}
-            Car cars = new Car();
-            cars.Id = 4;
-            cars.BrandId = 1;
-            cars.ColorId = 2;
-            cars.ModelName = "Transit";
-            cars.DailyPrice = 1500;
-            cars.Description = "Yük Taşıma Arabası";
-            cars.ModelYear = DateTime.Parse("2018-02-10");
+            Car cars = new Car { 
+            BrandId = 7,
+            ColorId = 2,
+            ModelName = "Cla 200",
+            DailyPrice = 3500,
+            Description = "Lüks Araba",
+            ModelYear = DateTime.Parse("2022-01-10"),
+             };
             carManager.Add(cars);
 
         }
