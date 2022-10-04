@@ -9,16 +9,34 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            // Rental denemeler
-            RentalManager rentalManager = new RentalManager(new EfRentalDal());
-            //RentalAdd(rentalManager);
-            foreach (var rental in rentalManager.GetAll().Data)
+
+            //Customer Denemeleri
+            CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
+            var result = customerManager.GetCustomerById(3);
+            foreach (var c in result.Data)
             {
-                Console.WriteLine(rental.CarId + " " +rental.CustomerId);
+                Console.WriteLine(c.Id + " " + c.FirstName + " " + c.LastName + " " + c.CompanyName);
             }
+            //CustomerAllDetail(customerManager);
+
+            //User Denemeleri
+            //UserManager userManager = new UserManager(new EfUserDal());
+            //UserListed(userManager);
+            //UserListedByName(userManager);
+            //UserAdd(userManager);
 
 
+            //Brand Denemeleri
+            //BrandManager brandManager = new BrandManager(new EfBrandDal());
+            //BrandGetById(brandManager);
+            //BrandListed(brandManager);
 
+
+            // Rental denemeler
+            //RentalManager rentalManager = new RentalManager(new EfRentalDal());
+            ////RentalAdd(rentalManager);
+            //RentalListed();
+            //RentalGetById(rentalManager);
 
 
 
@@ -33,6 +51,66 @@ namespace ConsoleUI
             //GetCarsByBrandIdTest(carManager);
             //CarAddTest(carManager);
 
+        }
+
+        private static void CustomerAllDetail(CustomerManager customerManager)
+        {
+            var cd = customerManager.GetAllCustomerDetails().Data;
+            foreach (var c in cd)
+            {
+                Console.WriteLine(c.Id + " " + c.FirstName + " " + c.LastName + " " + c.CompanyName);
+            }
+        }
+
+        private static void UserAdd(UserManager userManager)
+        {
+            userManager.Add(new User { FirstName = "Yeliz", LastName = "Yavaş", Email = "yelizyavas@gmail.com", Password = "yeliz.1234" });
+        }
+
+        private static void UserListedByName(UserManager userManager)
+        {
+            var result = userManager.GetUserByName("Emre");
+            foreach (var user in result.Data)
+            {
+                Console.WriteLine(user.LastName);
+
+            }
+        }
+
+        private static void UserListed(UserManager userManager)
+        {
+            foreach (var user in userManager.GetAll().Data)
+            {
+                Console.WriteLine(user.FirstName + " " + user.LastName);
+            }
+        }
+
+        private static void BrandGetById(BrandManager brandManager)
+        {
+            var result = brandManager.GetById(3);
+            Console.WriteLine(result.Data.BrandName);
+        }
+
+        private static void RentalGetById(RentalManager rentalManager)
+        {
+            var result = rentalManager.GetById(1);
+            Console.WriteLine(result.Data.CarId);
+        }
+
+        private static void BrandListed(BrandManager brandManager)
+        {
+            foreach (var brand in brandManager.GetAll().Data)
+            {
+                Console.WriteLine("Id : " + brand.Id + " Marka : " + brand.BrandName);
+            }
+        }
+
+        private static void RentalListed(RentalManager rentalManager)
+        {
+            foreach (var rental in rentalManager.GetAll().Data)
+            {
+                Console.WriteLine(rental.CarId + " " + rental.CustomerId);
+            }
         }
 
         private static void RentalAdd(RentalManager rentalManager)
