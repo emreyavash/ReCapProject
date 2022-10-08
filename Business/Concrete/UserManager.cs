@@ -1,5 +1,8 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
@@ -20,8 +23,14 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
+        [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
+            IResult result = BusinessRules.Run(CheckUserEmail(user.Email));
+            if (result != null)
+            {
+                return result;
+            }
             _userDal.Add(user);
             return new SuccessResult(Messages.Added);
         }
@@ -52,5 +61,18 @@ namespace Business.Concrete
             _userDal.Update(user);
             return new SuccessResult();
         }
+
+
+        // Business Rules Kodları
+        private IResult CheckUserEmail(string email)
+        {
+            var result = _userDal.GetAll(p => p.Email == email);
+            if (result.Any())
+            {
+                return new ErrorResult(Messages.UserEmailUsed);
+            }
+            return new SuccessResult();
+        }
+
     }
 }

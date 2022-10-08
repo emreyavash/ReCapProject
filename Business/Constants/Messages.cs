@@ -18,5 +18,6 @@ namespace Business.Constants
         public static string Deleted = "silindi.";
         public static string CarUpdated = "Araba güncellendi.";
         public static string Updated = "güncellendi.";
+        public static string UserEmailUsed = "Kullanıcı email daha önce kullanılmış.";
     }
 }
