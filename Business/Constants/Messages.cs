@@ -19,5 +19,7 @@ namespace Business.Constants
         public static string CarUpdated = "Araba güncellendi.";
         public static string Updated = "güncellendi.";
         public static string UserEmailUsed = "Kullanıcı email daha önce kullanılmış.";
+        public static string ImageCountFull = "5 adet fotoğraf yükleyebilirsiniz.";
+        public static string NameUsed = "Girdiğiniz isim daha önce kullanılmış.";
     }
 }
