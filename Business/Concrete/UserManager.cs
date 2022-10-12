@@ -23,6 +23,10 @@ namespace Business.Concrete
             _userDal = userDal;
         }
 
+        public IDataResult<List<OperationClaim>> GetClaims(User user)
+        {
+            return new SuccessDataResult<List<OperationClaim>>(_userDal.GetClaims(user));
+        }
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(User user)
         {
@@ -74,5 +78,9 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
+        public IDataResult<User> GetByMail(string mail)
+        {
+            return new SuccessDataResult<User>(_userDal.Get(u => u.Email == mail));
+        }
     }
 }

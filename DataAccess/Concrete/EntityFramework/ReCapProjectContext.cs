@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Entities.Concrete;
+using Entities.Concrete;
 using Entities.DTOs;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -28,5 +29,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<CarDetailDto> CarDetailDtos { get; set; }
         public DbSet<CustomerDetailDto> CustomerDetailDtos { get; set; }
         public DbSet<CarImage> CarImages { get; set; }
+        public DbSet<OperationClaim> OperationClaims { get; set; }
+        public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
     }
 }

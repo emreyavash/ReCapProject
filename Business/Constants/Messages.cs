@@ -21,5 +21,12 @@ namespace Business.Constants
         public static string UserEmailUsed = "Kullanıcı email daha önce kullanılmış.";
         public static string ImageCountFull = "5 adet fotoğraf yükleyebilirsiniz.";
         public static string NameUsed = "Girdiğiniz isim daha önce kullanılmış.";
+        public static string AccessTokenCreated = "Token Oluşturuldu.";
+        public static string UserNotFound = "Kullanıcı bulunumadı.";
+        public static string UserAlreadyExists = "Kullanıcı daha önce kayıt olmuş.";
+        public static string PasswordError = "Şifre hatalı.";
+        public static string SuccessfulLogin = "Giriş başarılı.";
+        public static string UserRegistered = "Başarılı bir şekilde kayıt oldun.";
+        public static string AuthorizationDenied = "Yetkiniz Yok";
     }
 }
