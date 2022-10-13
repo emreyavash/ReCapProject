@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _brandService.GetAll();
-            return Ok(result.Data);
+            return Ok(result);
         }
 
         [HttpPost("branddetail")]
@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
             var result = _brandService.GetById(id);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result.Message);
         }

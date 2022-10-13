@@ -20,7 +20,7 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _carService.GetAll();
-            return Ok(result.Data);
+            return Ok(result);
         }
 
         [HttpGet("CarsDetail")]
@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
             var result = _carService.GetCarDetails();
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result.Message);
         }
@@ -40,7 +40,7 @@ namespace WebAPI.Controllers
             var result = _carService.GetCarsByBrandId(id);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
             }
             return BadRequest(result.Message);
         }

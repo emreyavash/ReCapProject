@@ -19,7 +19,7 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _colorService.GetAll();
-            return Ok(result.Data);
+            return Ok(result);
         }
 
         [HttpPost("add")]

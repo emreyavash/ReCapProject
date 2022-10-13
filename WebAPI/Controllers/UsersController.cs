@@ -21,7 +21,7 @@ namespace WebAPI.Controllers
         public IActionResult GetAll()
         {
             var result = _userService.GetAll();
-            return Ok(result.Data);
+            return Ok(result);
         }
         [HttpGet("getuserdetail")]
         public IActionResult GetUserDetail(int id)
@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
             var result = _userService.GetUserById(id);
             if (result.Success)
             {
-                return Ok(result.Data);
+                return Ok(result);
 
             }
             return BadRequest(result.Message);
