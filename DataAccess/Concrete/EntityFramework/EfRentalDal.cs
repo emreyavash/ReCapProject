@@ -5,6 +5,7 @@ using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace DataAccess.Concrete.EntityFramework
     public class EfRentalDal : EfEntityRepositoryBase<Rental, ReCapProjectContext>, IRentalDal
     {
     
-        public List<RentalsDetailDto> GetRentalsDetails()
+        public List<RentalsDetailDto> GetRentalsDetails(Expression<Func<RentalsDetailDto, bool>> filter = null)
         {
             using (ReCapProjectContext context = new ReCapProjectContext())
             {
@@ -27,10 +28,11 @@ namespace DataAccess.Concrete.EntityFramework
                                  Id = r.Id,
                                  FullName = $"{u.FirstName} {u.LastName}",
                                  BrandName = b.BrandName,
-                                 RentDate = r.RentDate,
-                                 ReturnDate = r.ReturnDate
+                                 CarId=r.CarId,
+                                 RentDate =Convert.ToDateTime(r.RentDate.ToString("dd/MM/yyyy")),
+                                 ReturnDate = Convert.ToDateTime(r.ReturnDate.ToString("dd/MM/yyyy"))
                              };
-                return result.ToList();
+                return filter == null ? result.ToList() : result.Where(filter).ToList();
             }
             
         }

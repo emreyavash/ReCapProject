@@ -5,15 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.DTOs
+namespace Entities.Concrete
 {
-    public class RentalsDetailDto :IDto
+    public class FakeBank:IEntity
     {
         public int Id { get; set; }
         public int CarId { get; set; }
-        public string BrandName { get; set; }
         public string FullName { get; set; }
-        public DateTime RentDate { get; set; }
-        public DateTime ReturnDate { get; set; }
+        public string CardNo { get; set; }
+        public int Month { get; set; }
+        public int Year { get; set; }
+        public string Cvv { get; set; }
+        public decimal Price { get; set; }
     }
 }

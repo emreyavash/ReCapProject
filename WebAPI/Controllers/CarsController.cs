@@ -21,6 +21,12 @@ namespace WebAPI.Controllers
         {
             var result = _carService.GetAll();
             return Ok(result);
+        }     
+        [HttpGet("getcarbycolorandbrandid")]
+        public IActionResult GetCarsByColorIdAndBrandId(int brandId,int colorId)
+        {
+            var result = _carService.GetCarsByColorIdAndBrandId(brandId, colorId);
+            return Ok(result);
         }
 
         [HttpGet("CarsDetail")]

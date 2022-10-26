@@ -22,10 +22,14 @@ namespace Business.Concrete
 
         public IResult Add(Rental rental)
         {
+            rental.RentDate.ToShortDateString();
+            rental.ReturnDate.ToShortDateString();
             _rentalDal.Add(rental); 
 
             return new SuccessResult(Messages.Added);
         }
+
+        
 
         public IResult Delete(Rental rental)
         {
@@ -41,6 +45,10 @@ namespace Business.Concrete
         public IDataResult<Rental> GetById(int id)
         {
             return new SuccessDataResult<Rental>(_rentalDal.Get(p => p.Id == id));
+        } 
+        public IDataResult<List<RentalsDetailDto>> GetRentalByCarId(int carId)
+        {
+            return new SuccessDataResult<List<RentalsDetailDto>> (_rentalDal.GetRentalsDetails(p => p.CarId == carId));
         }
 
         public IDataResult<List<RentalsDetailDto>> GetRentalDetail()
