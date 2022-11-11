@@ -11,6 +11,7 @@ namespace Entities.Concrete
     {
         public int Id { get; set; }
         public int CarId { get; set; }
+        public int UserId { get; set; }
         public string FullName { get; set; }
         public string CardNo { get; set; }
         public int Month { get; set; }

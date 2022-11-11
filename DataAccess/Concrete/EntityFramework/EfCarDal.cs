@@ -26,10 +26,12 @@ namespace DataAccess.Concrete.EntityFramework
                                  Id = c.Id,
                                  BrandId = b.Id,
                                  ColorId = cl.Id,
+                                 Description = c.Description,
                                  BrandName = b.BrandName,
                                  ColorName = cl.ColorName,
                                  ModelName = c.ModelName,
                                  DailyPrice = c.DailyPrice,
+                                 FindexPoint = c.FindexPoint,
                                  CarImage = (from i in context.CarImages where i.CarId == c.Id select i.ImagePath).FirstOrDefault()
                              };
                 return  filter == null ? result.ToList() : result.Where(filter).ToList() ;

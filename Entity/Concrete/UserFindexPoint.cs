@@ -7,15 +7,10 @@ using System.Threading.Tasks;
 
 namespace Entities.Concrete
 {
-    public class Rental : IEntity
+    public class UserFindexPoint:IEntity
     {
         public int Id { get; set; }
-        public int CarId { get; set; }
-        public int CustomerId { get; set; }
+        public int UserId { get; set; }
         public int FindexPoint { get; set; }
-        public int UserFindexPoint { get; set; }
-        public DateTime RentDate { get; set; }
-        public DateTime ReturnDate { get; set; }
-
     }
 }

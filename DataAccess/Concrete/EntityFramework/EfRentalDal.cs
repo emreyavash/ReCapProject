@@ -23,12 +23,16 @@ namespace DataAccess.Concrete.EntityFramework
                              join u in context.Users on cu.UserId equals u.Id
                              join c in context.Cars on r.CarId equals c.Id
                              join b in context.Brands on c.BrandId equals b.Id
+                             join f in context.UserFindexPoints on u.Id equals f.UserId
                              select new RentalsDetailDto
                              {
                                  Id = r.Id,
                                  FullName = $"{u.FirstName} {u.LastName}",
                                  BrandName = b.BrandName,
                                  CarId=r.CarId,
+                                 UserId = u.Id,
+                                 FindexPoint = c.FindexPoint,
+                                 UserFindexPoint = f.FindexPoint,
                                  RentDate =Convert.ToDateTime(r.RentDate.ToString("dd/MM/yyyy")),
                                  ReturnDate = Convert.ToDateTime(r.ReturnDate.ToString("dd/MM/yyyy"))
                              };
